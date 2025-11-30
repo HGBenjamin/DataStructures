@@ -2,3 +2,5 @@
 build.xml
 manifest.mf
 /nbproject
+.DS_Store
+src/.DS_Store

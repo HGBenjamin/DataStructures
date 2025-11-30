@@ -1,4 +1,4 @@
-package MyDataStructures;
+package DataStructures;
 
 /**
  *
