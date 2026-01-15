@@ -43,83 +43,83 @@ public class BinaryTreeTest
     }
 
     /**
-     * Test of insert method, of class BinaryTree.
+     * Test of insert method, of class BinarySearchTree.
      */
     @Test
     public void testInsert()
     {
         System.out.println("insert");
         int data = 0;
-        BinaryTree instance = new BinaryTree();
+        BinarySearchTree instance = new BinarySearchTree();
         instance.insert(data);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of printPreOrder method, of class BinaryTree.
+     * Test of printPreOrder method, of class BinarySearchTree.
      */
     @Test
     public void testPrintPreOrder()
     {
         System.out.println("printPreOrder");
-        BinaryTree instance = new BinaryTree();
+        BinarySearchTree instance = new BinarySearchTree();
         instance.printPreOrder();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of printInOrder method, of class BinaryTree.
+     * Test of printInOrder method, of class BinarySearchTree.
      */
     @Test
     public void testPrintInOrder()
     {
         System.out.println("printInOrder");
-        BinaryTree instance = new BinaryTree();
+        BinarySearchTree instance = new BinarySearchTree();
         instance.printInOrder();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of printPostOrder method, of class BinaryTree.
+     * Test of printPostOrder method, of class BinarySearchTree.
      */
     @Test
     public void testPrintPostOrder()
     {
         System.out.println("printPostOrder");
-        BinaryTree instance = new BinaryTree();
+        BinarySearchTree instance = new BinarySearchTree();
         instance.printPostOrder();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of delete method, of class BinaryTree.
+     * Test of delete method, of class BinarySearchTree.
      */
     @Test
     public void testDelete()
     {
         System.out.println("delete");
         int value = 0;
-        BinaryTree instance = new BinaryTree();
+        BinarySearchTree instance = new BinarySearchTree();
         instance.delete(value);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of find method, of class BinaryTree.
+     * Test of find method, of class BinarySearchTree.
      */
     @Test
     public void testFind()
     {
         System.out.println("find");
         int data = 0;
-        BinaryTree instance = new BinaryTree();
-        BinaryTree.Node expResult = null;
-        BinaryTree.Node result = instance.find(data);
+        BinarySearchTree instance = new BinarySearchTree();
+        BinarySearchTree.Node expResult = null;
+        BinarySearchTree.Node result = instance.find(data);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

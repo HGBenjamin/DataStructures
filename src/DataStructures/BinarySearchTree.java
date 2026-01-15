@@ -1,10 +1,11 @@
 package DataStructures;
 
 /**
- *
+ * A structure made up of nodes where a parent node is greater than it's left child and it's less than or equal to it's right child
+ * 
  * @author Haivan Benjamin
  */
-public class BinaryTree
+public class BinarySearchTree
 {
 
     /**
@@ -69,12 +70,12 @@ public class BinaryTree
 
     Node root;
 
-    public BinaryTree()
+    public BinarySearchTree()
     {
         root = null;
     }
 
-    public BinaryTree(int data)
+    public BinarySearchTree(int data)
     {
         root = new Node(data);
     }
