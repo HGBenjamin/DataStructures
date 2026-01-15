@@ -1,24 +1,21 @@
 package DataStructures;
 
 /**
- * A structure made up of nodes where a parent node is greater than it's left child and it's less than or equal to it's right child
+ * A structure made up of nodes such that for every node,
+ * all values in its left sub tree are less than the node's value,
+ * and all values in its right sub tree are greater than or equal to the node's value.
  * 
  * @author Haivan Benjamin
  */
 public class BinarySearchTree
 {
-
-    /**
-     *
-     * @author Haivan Benjamin
-     */
     public static class Node
     {
 
         private int data;
         private Node leftChild;
         private Node rightChild;
-
+        
         public Node()
         {
             leftChild = null;
@@ -80,11 +77,19 @@ public class BinarySearchTree
         root = new Node(data);
     }
 
+    /**
+     * Inserts a value into the tree.
+     *
+     * <p>If the value already exists, it is inserted into the right sub tree.</p>
+     *
+     * @param data the value to insert
+     */
     public void insert(int data)
     {
         root = insert(root, data);
     }
 
+    // Recursively inserts a value starting at the given node
     private Node insert(Node tempNode, int data)
     {
         if(tempNode == null)
@@ -104,6 +109,9 @@ public class BinarySearchTree
         return tempNode;
     }
 
+    /**
+     * Traverse through the tree: root, left sub tree, right sub tree
+     */
     public void printPreOrder()
     {
         printPreOrder(root);
@@ -123,6 +131,9 @@ public class BinarySearchTree
         printPreOrder(node.getRightChild());
     }
 
+    /**
+     * Traverse through the tree: left sub tree, root, right sub tree
+     */
     public void printInOrder()
     {
         printInOrder(root);
@@ -141,7 +152,10 @@ public class BinarySearchTree
         System.out.print(" ");
         printInOrder(node.getRightChild());
     }
-
+    
+    /**
+     * Traverse through the tree: left sub tree, right sub tree, root
+     */
     public void printPostOrder()
     {
         printPostOrder(root);
@@ -161,11 +175,17 @@ public class BinarySearchTree
         System.out.print(" ");
     }
 
+    /**
+     * Removes a value from the tree if it exists.
+     * 
+     * @param value the value to remove
+     */
     public void delete(int value)
     {
         delete(root, value);
     }
 
+    // Recursively deletes a value starting at the given node
     private Node delete(Node node, int value)
     {
         if(node == null)
@@ -202,6 +222,7 @@ public class BinarySearchTree
         return node;
     }
 
+    // Returns the leftmost node in the given node's right subtree.
     private Node getInOrderSuccessor(Node node)
     {
         node = node.getRightChild();// Get the right subtree
@@ -214,6 +235,12 @@ public class BinarySearchTree
         return node;
     }
 
+    /**
+     * Searches for a value in the tree
+     * 
+     * @param data the value to search for
+     * @return the node containing the value, or null if not found
+     */
     public Node find(int data)
     {
         return find(root, data);
