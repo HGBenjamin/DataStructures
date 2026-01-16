@@ -1,22 +1,25 @@
 package DataStructures;
 
 /**
- *
+ * A linear data structure composed of nodes.
+ * Each node stores an integer value and a reference to the next node in the sequence.
+ * The list is accessed starting from a head node and terminates when a node's
+ * next reference is null.
+ * 
  * @author Haivan Benjamin
  */
 public class LinkedList
 {
-     
-    /**
-    * Node class represents a data structure
-    *
-    * @author Haivan Benjamin
-    */
     public static class Node 
     {
         int data;
 
         Node next;
+        
+        public Node()
+        {
+            next = null;
+        }
 
         public Node(int aData)
         {
@@ -42,6 +45,12 @@ public class LinkedList
         this.head = aHead;
     }
     
+    /**
+     * Finds a node based on the key value provided.
+     * 
+     * @param key value of node to find
+     * @return the node with the given key
+     */
     public Node findNode(int key)
     {
         if(this.isEmpty())
@@ -66,6 +75,11 @@ public class LinkedList
         return null;
     }
     
+    /**
+     * Inserts a node with value data at the beginning of the list.
+     * 
+     * @param data value of node to insert at begging of the list.
+     */
     public void addFirst(int data)
   {
         if(this.isEmpty())
@@ -81,6 +95,11 @@ public class LinkedList
         head = newNode;
     }
     
+    /**
+     * Inserts a node with value data at the end of the list.
+     * 
+     * @param data value of node to insert at the end of the list.
+     */
     public void addLast(int data)
     {
         if(this.isEmpty())
@@ -100,6 +119,12 @@ public class LinkedList
         temp.next = newNode;
     }
     
+    /**
+     * Deletes the <strong>first</strong> node with the value data.
+     * 
+     * @param data the value of the node to delete.
+     * @return the node that will be deleted.
+     */
     public Node deleteNode(int data)
     {
         if(this.isEmpty())
@@ -128,6 +153,12 @@ public class LinkedList
         return nodeToFind;
     }
     
+    /**
+     * Reverses the linked list, such that each node references the previous node. 
+     * If a node is not preceded it references null.
+     * 
+     * @return the head of the reversed list.
+     */
     public Node reverse()
     {
         if(this.isEmpty())
@@ -156,29 +187,9 @@ public class LinkedList
         return head;
     }
     
-    public Node reverse1()
-    {
-        if(this.isEmpty()) throw new RuntimeException("Empty linked list");
-        
-        Node prev = null;
-        Node curr = head;
-        Node next = curr.next;
-        
-        while(next != null)
-        {
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-            next = next.next;
-        }
-        
-        curr.next = prev;
-        
-        head = curr;
-        
-        return head;
-    }
-    
+    /**
+     * Displays each node's value in the linked list.
+     */
     public void display()
     {
         Node temp = head;
@@ -190,6 +201,11 @@ public class LinkedList
         }
     }
     
+    /**
+     * Checks if the linked list is empty.
+     * 
+     * @return whether the list is empty.
+     */
     public boolean isEmpty()
     {
         return this.head == null;
