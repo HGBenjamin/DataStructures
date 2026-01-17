@@ -1,62 +1,74 @@
 package DataStructures;
 
 /**
- *
+ * A data structure that follows the first in first out principle implemented with an array.
+ * 
+ * Elements are removed in the order they were inserted (enqueued)
+ * 
  * @author Haivan Benjamin
  */
 public class Queue 
 {
     int maxSize;
-    int[] queArr;
+    int[] queueArr;
     int front;
     int rear;
-    boolean isWrapped;
+    int size;
     
     public Queue(int maxSize)
     {
         this.maxSize = maxSize;
-        this.queArr = new int[maxSize];
-        this.front = -1;
-        this.rear = -1;
-        this.isWrapped = false;
+        this.queueArr = new int[maxSize];
+        this.front = 0;
+        this.rear = 0;
+        this.size = 0;
     }
     
-    public void enqueue(int data)
+    /**
+     * Insert item into the queue. 
+     * New elements are always added to the end.
+     * 
+     * @param data element to add to the queue
+     */
+    public void enqueue(int value) 
     {
-        if(this.isEmpty()) 
+        if (isFull()) 
         {
-            front = 0;
-            rear = front;
+            throw new IllegalStateException("Queue is full");
         }
-        
-        queArr[rear] = data;// add item to the back of the queue then increment where the end is
-        
-        if(front > 0)
-        {
-            rear = (rear + 1) % maxSize;
-        }
-        
-        rear++;
-        
-        System.out.println("queue is full");
+
+        queueArr[rear] = value;
+        size++; // size invariant
+        rear = (rear + 1) % maxSize; // movement invariant
     }
     
-    public int dequeue()
+    /**
+     * Removes the first element of the queue.
+     * 
+     * @return first element of the queue.
+     */
+    public int dequeue() 
     {
-        // 
-        return 0;
+        if (isEmpty()) 
+        {
+            throw new IllegalStateException("Queue is empty");
+        }
+
+        int value = queueArr[front];
+        front = (front + 1) % maxSize; // movement invariant
+        size--;                          // size invariant
+
+        return value;
     }
     
     public boolean isFull()
     {
-        boolean isFull = rear == maxSize - 1;
-        //boolean isFull2 = 
-        return front > rear;
+        return size == maxSize;
     }
     
     public boolean isEmpty()
     {
-        return (front > rear && !isWrapped) || (front == -1 && rear == -1);
+        return size == 0;
     }
     
 }
