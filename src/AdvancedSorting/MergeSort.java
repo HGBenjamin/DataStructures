@@ -1,81 +1,102 @@
 package AdvancedSorting;
 
 /**
- *
+ * Merge Sort implementation.
+ * 
+ * <p> merge Sort is a divide and conquer algorithm.
+ It divides the input array in half until it reaches single element sub arrays.
+ Then it merges them in sorted order.</p>
+ * 
+ * <p><b>Time Complexity:</b> O(n * log(n))</p>
+ * <p><b>Space Complexity:</b> O(n)</p>
+ * <p><b>Stable:</b> Yes</p>
+ * 
  * @author Haivan Benjamin
  */
 public class MergeSort 
 {
-    public static int[] MergeSort(int[] arr)
+    
+    /**
+     * Sorts the given array using Merge Sort
+     * 
+     * @param arr array to be sorted.
+     * @return a sorted array.
+     */
+    public static void sort(int[] arr)
     {
-        if(arr.length == 1)
-        {
-            return arr;
-        }
-        
-        int n = arr.length;
-        int lLen = n/2;
-        int rLen = n - lLen;
-        
-        int[] lArr = new int[lLen];
-        int[] rArr = new int[rLen];
-        
-        for(int i = 0; i < lLen; i++)
-        {
-            lArr[i] = arr[i];
-        }
-        
-        for(int i = lLen; i < n; i++)
-        {
-            int curInd = i - lLen;
-            
-            rArr[curInd] = arr[i];
-        }
-        
-        lArr = MergeSort(lArr);
-        lArr = MergeSort(rArr);
-        
-        return Merge(lArr, rArr);
+        mergeSort(arr, 0, arr.length - 1);
     }
     
-    public static int[] Merge(int[] lArr, int[] rArr)
+    /**
+     * Recursive function that's actually responsible for sorting using Merge Sort algorithm.
+     * 
+     * @param arr the array to be sorted.
+     * @param leftBound the lower bound of the sub array.
+     * @param rightBound the upper bound of the sub array. 
+     */
+    private static void mergeSort(int[] arr, int leftBound, int rightBound)
     {
-        int[] combine = new int[lArr.length + rArr.length];
+        if(leftBound == rightBound) return;
         
-        if(lArr == null)
-        {
-            return rArr;
-        }
+        int mid = leftBound + (rightBound - leftBound) / 2;
         
-        if(rArr == null)
-        {
-            return lArr;
-        }
+        // Divide
+        mergeSort(arr, leftBound, mid);
+        mergeSort(arr, mid + 1, rightBound);
         
-        int i = 0, j = 0, k = 0;
+        // Conquer
+        merge(arr, leftBound, mid, rightBound);
+    }
+    
+    private static void merge(int[] arr, int leftBound, int mid, int rightBound)
+    {
+        int lSize = (mid - leftBound) + 1;
+        int rSize = rightBound - mid;
         
-        while(i < lArr.length && j < rArr.length)
+        int[] lArr = new int[lSize];
+        int[] rArr = new int[rSize];
+        
+        // Create temporary elements
+        for(int i = 0; i < lSize; i++) lArr[i] = arr[leftBound + i];
+        for(int i = 0; i < rSize; i++) rArr[i] = arr[mid + 1 + i];
+        
+        int i = 0, j = 0, k = leftBound;
+        
+        // Mege the temporary elements into the original array
+        while(i < lSize && j < rSize)
         {
             if(lArr[i] <= rArr[j])
             {
-                combine[k++] = lArr[i++];
+                arr[k] = lArr[i];
+                
+                i++;
             }
             else
             {
-                combine[k++] = rArr[j++];
+                arr[k] = rArr[j];
+                
+                j++;
             }
+            
+            k++;
         }
         
-        while(i < lArr.length)
+        // Copy remaining elements in left array.
+        while(i < lSize)
         {
-            combine[k++] = lArr[i++];
+            arr[k] = lArr[i];
+                
+            i++;
+            k++;
         }
         
-        while(j < rArr.length)
+        // Copy remaining elements in right array.
+        while(j < rSize)
         {
-            combine[k++] = rArr[j++];
+            arr[k] = rArr[j];
+                
+            j++;
+            k++;
         }
-        
-        return combine;
     }
 }
