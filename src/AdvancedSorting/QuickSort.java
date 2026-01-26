@@ -1,17 +1,32 @@
 package AdvancedSorting;
 
 /**
- *
+ * Quick Sort implementation.
+ * 
+ * <p>Quick Sort is a divide-and-conquer sorting algorithm that works by
+ * selecting a pivot element and partitioning the array so that elements
+ * less than the pivot come before it and elements greater than the pivot
+ * come after it. The algorithm then recursively sorts the two partitions.</p>
+ * 
+ * <p><b>Time Complexity:</b> Average case: O(n*log(n)), worst case: is O(n^2)</p>
+ * <p><b>Space Complexity:</b> Average case: O(log(n)), worst case: O(n)</p>
+ * <p><b>Stable:</b> Yes</p>
+ * 
  * @author Haivan Benjamin
  */
 public class QuickSort 
 {
-    public static void quickSort(int[] arr)
+    /**
+     * Sorts the given array using Quick Sort.
+     * 
+     * @param arr the array to be sorted.
+     */
+    public static void sort(int[] arr)
     {
         quickSort(arr, 0, arr.length - 1);
     }
     
-    public static void quickSort(int[] arr, int left, int right)
+    private static void quickSort(int[] arr, int left, int right)
     {
         if(right - left <= 0) return;
         
@@ -19,12 +34,10 @@ public class QuickSort
         
         quickSort(arr, 0, partition - 1);
         quickSort(arr, partition + 1, right);
-        
-        
     }
     
     @SuppressWarnings("empty-statement")
-    public static int partition(int[] arr, int pivot, int left, int right)
+    private static int partition(int[] arr, int pivot, int left, int right)
     {        
         int leftPtr = left - 1;
         int rightPtr = right + 1;

@@ -1,6 +1,16 @@
 package AdvancedSorting;
 
 /**
+ * Shell Sort implementation.
+ *
+ * <p>Shell Sort is an optimization of insertion sort.
+ * Instead of maintaining a single sorted and unsorted portion,
+ * it creates multiple sorted subarrays by sorting elements that
+ * are a fixed gap (h-th) apart.</p>
+ * 
+ * <p><b>Time Complexity:</b> O(n^(3/2) <strong>Knuth's gap sequence</strong></p>
+ * <p><b>Space Complexity:</b> O(n)</p>
+ * <p><b>Stable:</b> Yes</p>
  *
  * @author Haivan Benjamin
  */
@@ -8,15 +18,11 @@ public class ShellSort
 {
     /**
      * Sorts the given array using the Shell sort algorithm.
-     * <p>
-     * Shell sort is a generalization of insertion sort that allows the exchange of elements far apart from each other. 
-     * The algorithm starts by sorting elements that are a certain gap distance apart (denoted as <code>h</code>), 
-     * and progressively reduces this gap until it becomes 1, at which point the array is fully sorted.
-     * </p>
+     * The gap sequence used is h = h * 3 + 1.
      *
      * @param arr the array to be sorted
      */
-    public static void shellSort(long[] arr)
+    public static void sort(long[] arr)
     {
         int n = arr.length;
         int h = 1;
